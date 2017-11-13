@@ -1,0 +1,79 @@
+%%
+%% This is file `example/metadata.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% install/buptgraduatethesis.dtx  (with options: `metadata')
+%% 
+%% This file is a part of the example of BUPTGraduateThesis.
+%% 
+
+%% 涉密论文保密年限
+\classdur{三年}
+
+%% 学号
+\studentid{2015140024}
+
+%% 论文题目
+\ctitle{基于对抗神经网络的人脸图片属性识别与生成}
+\etitle{Generative Adversarial Network based Face attribute recognition and regeneration}
+
+%% 申请学位
+\cdegree{工程硕士}
+
+%% 院系名称
+\cdepartment{信息与通信工程学院}
+
+%% 专业名称
+\cmajor{电子与通信工程}
+
+%% 你的姓名
+\cauthor{于志鹏}
+
+%% 博士后研究工作报告-分类号
+\classnumber{O441.3}
+
+%% 博士后研究工作报告-UDC
+\udc{621.396.9}
+
+%% 博士后研究工作报告-学校编号
+\schoolserial{147227}
+
+%% 博士后研究工作起始时间
+\startdate{2014年10月29日}
+
+%% 博士后研究工作期满时间
+\finishdate{2016年4月2日}
+
+%% 你导师的姓名
+\csupervisor{董远}
+
+%% 日期自动生成，也可以取消注释下面一行，自行指定日期
+\cdate{\CJKdigits{2017}年\CJKnumber{11}月\CJKnumber{30}日}
+
+%% 中文摘要
+\cabstract{%
+	在模式识别与多媒体搜索领域，神经网络近五年新兴技术，但是凭借着简洁、有效、易训练等优势迅速在图像处理领域得到了广泛的应用。 尤其是在人脸相关的领域，卷积神经网络的出现极大提升了人脸识别的准确率，并且尤其而上增加了人们对于探究人脸属性的期待，甚至想象。传统的人脸属性识别，往往采用对于人脸特征进行提取，在特征工程上进行分类器选择和调整。即使在神经网络飞速发展的前提之下，人们依然非常执着和热衷于将不同的神经网络结构下的人脸特征进行提取，然后按照特征工程的方式构建属性识别系统。然而随着端到端学习的兴起，人们对于整合识别的流程经过有了新的认识，简化任务流程设定合理的调整策略，让原本基于分治算法的子任务问题解决模态和神经网络较强的学习能力相互结合，尽量能够直接给出具体识别任务的答案，是目前领先的思想和发展方向。
+
+	另一方面，作为神经网络另类演变，对抗生成网络初期是为了探究神经神经网络的内部构造原理。但是随着对抗生成网络的不断进化，神经网络在图像重建领域开始有了出色的表现。例如超像素、图像风格，数据合成等。但是随着图片分布理念的兴起，迁移学习的理念作为非监督学习与监督学习之间的过渡，具有较高的使用价值和较低的转换成本。而对抗生成网络对于图像分布的良好表现能力，在迁移学习上的应用也很值得被探索。
+
+	本文主要研究两个方面的问题，一方面是调整网络的结构，结合端到端的设计思想和优化方式，尝试对于人脸图片的属性识别准确性提升。另一方面结合对抗生成网络对于人脸图片进行生成，不断优化合成数据的真实度和广泛性，能够结合迁移学习的思想提升机器对于人脸属性更好的理解能力。具体的贡献工作包括：设计带自控提升的智能学习策略，使用多机多卡的训练策略加速训练的过程，使用指令集和超线程优化前馈过程快速生成图片，调整人脸图片的生成网络增强人脸图片的合成效果，通过使用合成数据弥补不同场景数据对于学习支持的不足，进而在不同场景下人脸属性的识别准确率。
+}
+
+%% 中文关键词，关键词之间用 \kwsep 分割
+\ckeywords{\kwsep 对抗生成网络 \kwsep 人脸属性 \kwsep 迁移学习 \kwsep 多机多卡 \kwsep 前馈优化 }
+
+%% 英文摘要
+\eabstract{%
+In the field of pattern recognition and multimedia search, the neural network has been emerging for nearly five years, but it has been widely applied in the field of image processing due to its advantages of concise, effective and easy training. Especially in the face-related fields, the appearance of convolutional neural network greatly enhances the accuracy of face recognition, and in particular, it increases people's expectations for exploring face attributes, and even imagines them. Traditional face recognition, face feature extraction is often used in the feature engineering classifier selection and adjustment. Even under the premise of the rapid development of neural network, people are still very persistent and keen to extract facial features under different neural network structures, and then construct the attribute recognition system according to the way of feature engineering. However, with the rise of end-to-end learning, people have a new understanding of the process of integration and recognition, simplify the task flow to set a reasonable adjustment strategy, so that the original sub-task based on divide-and-conquer algorithm to solve the problem of modal and neural network Strong learning ability combined with each other, as far as possible to give specific answers to the identification task, is the leading thinking and direction of development.
+
+On the other hand, as an alternative to neural networks, the early days of confrontation generation networks were to explore the internal structural principles of neural networks. However, with the evolution of adversarial networks, neural networks have begun to perform well in the field of image reconstruction. Such as super-pixel, image style, data synthesis and so on. However, with the rise of the concept of image distribution, the concept of relocated learning as a transition between unsupervised learning and supervised learning has high value of use and low conversion cost. However, the ability of confrontation-generating networks to perform well in image distribution is also worth exploring in migration learning.
+
+This paper mainly studies two aspects of the problem. On the one hand, it adjusts the structure of the network, and combines the end-to-end design and optimization methods to try to improve the accuracy of attribute recognition of face images. On the other hand, combining anti-generated network to generate face images and continuously optimizing the authenticity and universality of the synthesized data, it is possible to improve the machine's ability of comprehension of face attributes in combination with the idea of ​​migration learning. Specific contributions include designing intelligent learning strategies with self-controlled ascension, accelerating the training process using multi-machine and multi-card training strategies, using instruction sets and hyperthreading to optimize the feedforward process to quickly generate pictures, and adjusting the generation of face pictures to enhance the network The synthetic effect of face pictures can make up for the lack of learning support for different scene data by using synthetic data and the recognition accuracy of face attributes in different scenes.
+
+}
+
+%% 英文关键词，也用 \kwsep 分割
+\ekeywords{%
+   \kwsep GAN \kwsep face attribue \kwsep transfer leearning \kwsep Multi-machine multi-card \kwsep Feedforward optimization}
