@@ -1,7 +1,160 @@
 \chapter{卷积神经网络的相关技术介绍}
+
 \section{卷积神经网络的基础操作和训练}
+卷积神经网络是一种前馈神经网络，利用反向传播算法进行训练，被广泛应用 于图像识别领域。卷积神经网络和普通的神经网络很像：都需要可以学习参数的神 经元；神经元都要接受输入并进行点积运算；神经元都含有非线性激活函数；都是 把数据最后转化成输出；都需要分类的损失函数等等。其不同点在于卷积神经网络 假设输入的是图像，使得我们可以充分利用这个特点来优化网络结构，从而更加有 效率的完成网络的前馈和减少整个网络的参数。 卷积神经网络是使用深度学习进行人脸特征提取的基础，接下来，笔者将从网 络结构的基本组成、常用激活函数、常用参数初始化方法、卷积神经网络的训练与 优化四个方面来介绍卷积神经网络的相关内容。
+2.1.1 卷积神经网络结构的基本组成
+卷积神经网络结构的基本组成单位是层，不同于普通神经网络的层类型的单一， 卷积神经网络具有非常丰富种类的层。每个卷积神经网络都或多或少包含数个、数 十个甚至上百上千个层。接下来笔者将按照功能介绍最常见的一些层。
+2.1.1.1 卷积层
+卷积层是卷积神经网络最核心的层，包含了卷积神经网络的绝大部分计算。每 一个卷积层都会使用多个不同参数的卷积核，每一个卷积核对输入图像局部感知，实 现参数共享。 卷积层相关的超参数包括：
+1. N 卷积核的数目
+9
+北京邮电大学工学硕士学位论文
+2. Kh,Kw 高度方向和宽度方向上的卷积核大小
+3. Sh,Sw 高度方向和宽度方向上的卷积步长
+4. Ph,Pw 高度方向和宽度方向上的补零数
+
+输入输出参数包括：
+1. Cinput,Hinput,Winput 分别为输入通道数、输入高度、输入宽度
+2. Coutput,Houtput,Woutput 分别为输出通道数、输出高度、输出宽度
+其中输出参数由如下公式确定：
+Woutput =
+Winput−Kw+2Pw Sw
++1
+Houtput =
+Hinput−Kh+2Ph Sh
++1
+Coutput = N
+(2-1)
+卷积层的参数包括权重W1,...,WN 和偏置项 B1,...,BN。第 i 个卷积核的Wi 包含 的参数个数 NWi 为 Kh×Kw×Cinput，Bi 包含的参数量 NBi 为 1，则卷积层的浮点运算 量可以用浮点乘法运算量表示为 N×NWi×Houtput×Woutput。 卷积层的计算公式如下： xlj = f ∑ i∈Mj xl−1 i ∗klij +blj  (2-2) 其中 Mj 代表的是第 l 层的第 j 个输出所对应的 l−1 层特征图上的所有映射的集合， xl−1 i 代表第 l−1 层的第 i 个映射图，klij 代表的是第 j 个卷积核的第 i 个通道的空间 图谱，blj 代表的是第 j 个卷积核的偏置项，xlj 代表的是第 l 层的第 j 个输出；运算符 号∗代表卷积运算，f (·) 代表的是激活函数。 最常使用的卷积层是卷积核大小为 3×3 的卷积层，3x3 卷积的计算过程示例如 图2-1所示。假设输入为 4×4 的特征图谱，卷积核大小为 3×3，假设补零为 0，步长
+10
+第二章 相关理论基础与数据集
+图 2-1 3×3 卷积的计算过程图 为 1，则输出特征图谱的计算方法如下： A = 1×a+0×b+0×c+0×d+1×e+1×f +0×g+1×h+1×i B = 0×a+0×b+1×c+1×d+1×e+0×f +1×g+1×h+0×i C = 0×a+1×b+1×c+0×d+1×e+1×f +1×g+0×h+0×i D = 1×a+1×b+0×c+1×d+1×e+0×f +0×g+0×h+1×i
+(2-3)
+除此之外，一些比较新颖的卷积类型也相继出现。比如经常用于降维和增加非线性 的 1×1 卷积[24]，全卷积网络中常使用的扩张卷积[25] 等。
+2.1.1.2 池化层 池化（Pooling）层用于对输入进行降采样，使得卷积后的特征图谱的空间尺度 能够逐渐地减小，使得卷积神经网络在减少参数的同时防止了过拟合。 池化层的超参数包括：
+1. Kh,Kw 高度方向和宽度方向上的池化核大小 2. Sh,Sw 高度方向和宽度方向上的池化步长
+输入输出参数包括：
+1. Cinput,Hinput,Winput 分别为输入通道数、输入高度、输入宽度 2. Coutput,Houtput,Woutput 分别为输出通道数、输出高度、输出宽度
+11
+北京邮电大学工学硕士学位论文
+其中输出参数由如下公式确定：
+Woutput =
+Winput−Kw Sw
++1
+Houtput =
+Hinput−Kh Sh
++1
+Coutput =Cinput
+(2-4)
+池化层的计算公式如下：
+xlj = down i∈Mj (xl−1 i ) (2-5) 其中 Mj 代表的是第 l 层的第 j 个输出所对应的 l−1 层特征图上的所有映射的集合， xl−1 i 代表第 l−1 层的第 i 个映射图，xlj 代表的是第 l 层的第 j 个输出；down(·) 代表 的是下采样函数。
+图 2-2 最大值池化的计算过程图
+下采样操作通常有三种类型，一种是最大型池化，一种是均值型池化，另一种 是随机型池化。其中最大型池化使用最为广泛，示例如图2-2。假设输入为 4×4 的特 征图谱，池化核大小为 2×2，步长为 2，则输出特征图谱的计算方法如下： A = max(2,0,0,1) B = max(1,0,3,0) C = max(0,2,1,4) D = max(5,0,0,1) (2-6)
+12
+第二章 相关理论基础与数据集
+2.1.1.3 全连接层
+全连接全连接（Fully-connected，FC）层即输入和输出所有神经元之间都包含连 接，也就是普通神经网络最常用的层。 全连接层的输入大小假设为 Ninput, 输出大小假设为 Noutput，则全连接层包含的 参数量以及浮点运算量均可近似表示为 Ninput×Noutput。 全连接层的计算公式如下：
+Xoutput =WTXinput +b (2-7)
+其中 Xinput 代表全连接层的输入的二维矩阵表示，Xoutput 代表全连接层的输出的二维 矩阵表示，WT 代表权重参数的转置，b 代表偏置项参数。
+2.1.1.4 归一化层
+归一化层指的是对每一层的输出进行标准化操作，使得下一层的输入保持一个 较为稳定的分布。常用的标准化层有局部区域归一化（Local Region Normalization， LRN）层，批量标准化（BatchNomalization，BN）层[26] 等。
+2.1.1.5 决策层及损失函数
+决策层是整个网络的目标所在，包含着损失函数。最常用的决策层损失函数 是 Softmax 损失函数和欧几里得损失函数。 Softmax 损失函数主要用于多分类任务。假设决策层有 N 个类别目标，则 Softmax 分类器对应着 N 个输出节点，而这 N 个节点分别对应着 N 个离散的概率分布。 通过概率最大的类可以得到给出的预测类。相关公式如下所示：
+pi =
+ehi ∑N j=1ehj c = argmax i pi
+(2-8)
+其中 hi 代表第 i 个输出，pi 代表第 i 个概率值。从上述概率公式可以很快的得
+13
+北京邮电大学工学硕士学位论文
+到 Softmax 损失函数的表达式：
+Jsoftmax =−
+1 m
+m ∑ i=1
+N ∑ j=1[1{yi == j}log ehi ∑k=1Nehk]
+1{yi == j}=  
+1, yi == j 0, yi ! = j
+(2-9)
+其中 Jsoftmax 代表 Softmax 损失函数，m 为样本数量，N 为标签数量，yi 为第 i 个样本 的标签。 欧几里得损失函数主要用于回归任务。假设决策层的输出有 N 个值，则欧几里 得损失函数的公式为：
+Jeuc =
+1 2m
+m ∑ i=1
+N ∑ j=1
+(hij−yij)2 (2-10)
+其中其中 Jeuc 代表欧几里得损失函数,m 为样本数量,yij 为第 i 个样本的第 j 个标签， hij 为第 i 个样本的第 j 个输出。
+
+2.1.2 卷积神经网络常用激活函数 激活函数是神经网络非线性的保证。与普通神经网络常使用的 Sigmoid、双曲正 切激活函数不一样，卷积神经网络中最常用的激活函数属于修正线性单元一族。下 面先介绍一下 Sigmoid、双曲正切激活函数，然后介绍卷积神经网络中最常用的几种 激活函数。
+2.1.2.1 Sigmoid 激活函数 Sigmoid 激活函数是神经网络时代最常用的激活函数。Sigmoid 激活函数的数学 公式如下：
+xoutput =
+1 1+e−xinput
+(2-11)
+可以看出，Sigmoid 函数能把输出映射到区间 (0,1)：若输入非常大的负数，输出则 趋近于 0；若输入非常大的正数，则输出趋近于 1。近年来，Sigmoid 激活函数越来 越少被使用了，主要是由于Sigmoid激活函数很容易饱和：当输入很大或者很小的时 候，梯度是趋近于 0 的，如果初始值过大，会导致大量神经元处在饱和状态，即不更 新梯度，使得网络收敛越发困难。
+14
+第二章 相关理论基础与数据集
+2.1.2.2 双曲正切激活函数
+双曲正切激活函数是神经网络时代另一个比较常用的激活函数。双曲函数激活 函数的数学公式如下：
+xoutput =
+exinput −e−xinput exinput +e−xinput
+(2-12)
+2.1.2.3 修正线性单元激活函数 修正式线性单元修正式线性单元（Rectified Linear Unit，ReLU）是 Hinton 等[4] 在 2012 年使用后开始广泛使用的，有着历史性的意义。修正式线性单元的实现很简 单，如下： xoutput =   xinput, xinput ≥ 0 0, xinput < 0 (2-13) 相较于 Sigmoid、双曲正切激活函数，由于自身的非饱和特性，修正式线性单元极大 程度的加速了深度卷积网络的收敛。但是修正式线性单元也存在一个很大的问题。 在训练的时候，修正式线性单元比较脆弱并且可能“死亡”。举个例子来说，当一个 很大的梯度流过修正式线性单元的神经元的时候，可能会导致梯度更新到一种特别 的状态，在这种状态下神经元将无法被其他任何数据点再次激活。如果这种情况发 生，那么从此所以流过这个神经元的梯度将都变成 0。也就是说，这个单元在训练中 将不可逆转的死亡，而这样会导致数据多样化的丢失。
+2.1.2.4 带有负轴斜率的修正线性单元激活函数
+为了解决修正式线性单元的“死亡”问题，许多带有负轴斜率的修正式线性单 元方法相继出现，表达式为如下： xoutput =   xinput, xinput ≥ 0 α ·xinput, xinput < 0 (2-14) 其中：
+1. 在漏式的修正式线性单元漏式的修正式线性单元（Leaky Rectified Linear Unit， LReLU）中， α 是一个固定的斜率；
+15
+北京邮电大学工学硕士学位论文
+2. 在随机修正线性单元随机的修正式线性单元（Random Rectified Linear Unit， RReLU） [27] 中， α 是一个随机的斜率，且满足 α ∈[lower,unpper]，其中 lower、 upper 为 α 的下界和上界。
+3. 在带参数的修正线性单元带参数的修正式线性单元（ParametricRectifiedLinear Unit，PReLU） [28] 中， α 是一个可以学习的斜率。
+带有负轴斜率的修正式线性单元一定程度上解决了修正式线性单元的“死亡”问题， 但是输出的分布还达不到足够理想的状态。
+2.1.2.5 指数线性单元激活函数 指数线性单元指数式线性单元（Exponential Linear Unit，ELU） [29] 也是在负轴上 对修正线性单元进行优化，其表达式为： xoutput =   xinput, xinput ≥ 0 exinput −1, xinput < 0 (2-15) ELU 的输出具有很好的特性，比如其输出的均值近乎为 0，这使得网络更容易收敛。
+2.1.3 卷积神经网络常用的参数初始化方法
+神经网络求解的是局部最小值，一个好的参数初始化方法能使得卷积神经网络 收敛且收敛的更快。常用的卷积神经网络初始化方法有如下几种。
+2.1.3.1 常数初始化
+使用固定的常数初始化每个参数，常用来初始化的常数一般比较小，通常为 0。 常数初始化方法通常对偏置项所使用。
+2.1.3.2 均匀分布初始化
+假设参数服从在区间 [l,h] 上的均匀分布，进而为参数进行初始化。通常为权重 参数使用。Xavier 等在 2010 年提出的 Xavier 初始化方法[30] 就是一种均匀分布初始 化方法，其表达式为： W ∼U[−√ 6 ninput +noutput ,√ 6 ninput +noutput] (2-16)
+16
+第二章 相关理论基础与数据集
+其中W 为某一个卷积层的参数，ninput 为卷积层的输入的个数，noutput 为卷积层的输 出的个数，U[l,h] 代表服从区间 [l,h] 内的均匀分布。Xavier 初始化方法能够使得每 一层的输出方差尽量相等，从而让网络中的信息更好的流动。
+2.1.3.3 高斯分布初始化
+假设参数服从以 0 为均值， σ
+为方差的高斯分布，为参数进行初始化。通常为 权重参数使用。KaimingHe 等在 2015 年提出的 MSRA 初始化方法[28] 就是一种高斯 分布初始化方法，其表达式为： W ∼N[0,√ 4 ninput +noutput] (2-17) 其中W 为某一个卷积层的参数，ninput 为卷积层的输入的个数，noutput 为卷积层的输 出的个数，N[ µ , σ ] 代表服从均值为 µ 方差为 σ 的高斯分布。实验证明，对于较深的 卷积神经网络，MSRA 初始化方法比 Xavier 初始化方法更容易收敛。
+2.1.4 卷积神经网络的训练与优化 通常对于包含 N 个数据的数据集 D ，优化的损失函数可以写成：
+JW,b =
+1 N
+N ∑ i=1
+fW,b(Xi)+
+λ r(W) (2-18)
+其中 fW,b(Xi) 代表的是第 i 个数据的损失，r(W) 是正则化项， λ
+是正则化项的系数。 由于 N 有可能很大，所以实际上每一次的优化都只是使用一小部分的数据，通常称 为一个批量。 卷积神经网络最常用的优化方法是带动量的批量梯度下降批量梯度下降法 （BatchGradientDescent，BGD）法。带动量的批量梯度下降法的更新公式如下： Vt+1 = µ Vt− α ∇L(Wt) Wt+1 =Wt +Vt+1 (2-19) 其中 t+1 是迭代的当前轮数，W 是需要更新的参数，∇L(Wt) 是目标损失函数对于 Wt 的偏导数，Vt 是上一次参数的更新量，Vt+1 是本次的参数更新量， µ 是动量值， α 是学习率。 卷积神经网络的训练主要使用基于梯度的反向传播（Backpropagation，BP）算法。 假设卷积神经网络一共有 N 层，记作 L1,...,LN，y 代表样本标签，z 代表每一层的输
+17
+北京邮电大学工学硕士学位论文
+出，a 代表每一层输出的激活值， δ
+代表每一层传回的梯度值，W 为权重，b 为偏置
+项，则BP 算法步骤如下：
+1. 进行前馈运算，利用前向传导公式，得到 L2,...,LN 的激活值；
+2. 对 LN 层，计算:
+δ LN =−(y−aLN)f′(zLN) (2-20) 3. 对于第 i 层 Li，i = N−1,...,2，计算： δ Li =((WLi)T δ Li+1)f′(zLi) (2-21) 4. 依次计算每一层参数的偏导值： ∇WLiJW,b = δ Li+1(aLi)T∇ bLiJW,b = δ Li+1 (2-22)
+5. 利用公式2-19更新参数值。
+
+
+
 \section{多机多卡策略对于网络训练的提升}
+多卡:
+作者：谭旭
+链接：https://www.zhihu.com/question/63219175/answer/206697974
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+NCCL是Nvidia Collective multi-GPU Communication Library的简称，它是一个实现多GPU的collective communication通信（all-gather, reduce, broadcast）库，Nvidia做了很多优化，以在PCIe、Nvlink、InfiniBand上实现较高的通信速度。下面分别从以下几个方面来介绍NCCL的特点，包括基本的communication primitive、ring-base collectives、NCCL在单机多卡上以及多机多卡实现、最后分享实际使用NCCL的一些经验。（1）communication primitive并行任务的通信一般可以分为Point-to-point communication和Collective communication。P2P通信这种模式只有一个sender和一个receiver，实现起来比较简单。第二种Collective communication包含多个sender多个receiver，一般的通信原语包括broadcast，gather,all-gather,scatter,reduce,all-reduce,reduce-scatter,all-to-all等。简单介绍几个常用的操作：Reduce：从多个sender那里接收数据，最终combine到一个节点上。<img data-rawheight="328" src="https://pic2.zhimg.com/50/v2-fe26ffda0f48c40b3f4a8feb7a73a669_hd.png" data-rawwidth="1061" class="origin_image zh-lightbox-thumb" width="1061" data-original="https://pic2.zhimg.com/v2-fe26ffda0f48c40b3f4a8feb7a73a669_r.png">All-reduce：从多个sender那里接收数据，最终combine到每一个节点上。<img data-rawheight="323" src="https://pic3.zhimg.com/50/v2-42844fc757ab01338f110622f0bb4962_hd.png" data-rawwidth="1058" class="origin_image zh-lightbox-thumb" width="1058" data-original="https://pic3.zhimg.com/v2-42844fc757ab01338f110622f0bb4962_r.png">而传统Collective communication假设通信节点组成的topology是一颗fat tree，如下图所示，这样通信效率最高。但实际的通信topology可能比较复杂，并不是一个fat tree。因此一般用ring-based Collective communication。<img data-rawheight="720" src="https://pic4.zhimg.com/50/v2-37413835247c9a2763e1286e2af7d02f_hd.png" data-rawwidth="1200" class="origin_image zh-lightbox-thumb" width="1200" data-original="https://pic4.zhimg.com/v2-37413835247c9a2763e1286e2af7d02f_r.png">(2) ring-base collectivesring-base collectives将所有的通信节点通过首尾连接形成一个单向环，数据在环上依次传输。以broadcast为例， 假设有4个GPU，GPU0为sender将信息发送给剩下的GPU，按照环的方式依次传输，GPU0-->GPU1-->GPU2-->GPU3，若数据量为N，带宽为B，整个传输时间为（K-1）N/B。时间随着节点数线性增长，不是很高效。<img data-rawheight="406" src="https://pic2.zhimg.com/50/v2-12af80e172e09cc92e4e6dcde6841311_hd.png" data-rawwidth="626" class="origin_image zh-lightbox-thumb" width="626" data-original="https://pic2.zhimg.com/v2-12af80e172e09cc92e4e6dcde6841311_r.png">下面把要传输的数据分成S份，每次只传N/S的数据量，传输过程如下所示：<img data-rawheight="410" src="https://pic4.zhimg.com/50/v2-fed2f439627bc1c16bec63cc7ec84cdf_hd.png" data-rawwidth="628" class="origin_image zh-lightbox-thumb" width="628" data-original="https://pic4.zhimg.com/v2-fed2f439627bc1c16bec63cc7ec84cdf_r.png">GPU1接收到GPU0的一份数据后，也接着传到环的下个节点，这样以此类推，最后花的时间为S*(N/S/B) + (k-2)*(N/S/B) = N(S+K-2)/(SB) --> N/B，条件是S远大于K，即数据的份数大于节点数，这个很容易满足。所以通信时间不随节点数的增加而增加，只和数据总量以及带宽有关。其它通信操作比如reduce、gather以此类推。那么在以GPU为通信节点的场景下，怎么构建通信环呢？如下图所示：单机4卡通过同一个PCIe switch挂载在一棵CPU的场景：<img data-rawheight="206" src="https://pic4.zhimg.com/50/v2-dac47e37dedf4ce07c92861c138b91e7_hd.png" data-rawwidth="390" class="content_image" width="390">单机8卡通过两个CPU下不同的PCIe switch挂载的场景：<img data-rawheight="171" src="https://pic4.zhimg.com/50/v2-1400c6742580fabed45eb4d02553df83_hd.png" data-rawwidth="791" class="origin_image zh-lightbox-thumb" width="791" data-original="https://pic4.zhimg.com/v2-1400c6742580fabed45eb4d02553df83_r.png">（3）NCCL实现NCCL实现成CUDA C++ kernels，包含3种primitive operations： Copy，Reduce，ReduceAndCopy。目前NCCL 1.0版本只支持单机多卡，卡之间通过PCIe、NVlink、GPU Direct P2P来通信。NCCL 2.0会支持多机多卡，多机间通过Sockets (Ethernet)或者InfiniBand with GPU Direct RDMA通信。下图所示，单机内多卡通过PCIe以及CPU socket通信，多机通过InfiniBand通信。<img data-rawheight="162" src="https://pic4.zhimg.com/50/v2-c3c96eff75e8f1b161b6c62188370ea7_hd.png" data-rawwidth="462" class="origin_image zh-lightbox-thumb" width="462" data-original="https://pic4.zhimg.com/v2-c3c96eff75e8f1b161b6c62188370ea7_r.png">同样，在多机多卡内部，也要构成一个通信环<img data-rawheight="152" src="https://pic2.zhimg.com/50/v2-5614a5e2da87f34b0b76eabe40339f35_hd.png" data-rawwidth="459" class="origin_image zh-lightbox-thumb" width="459" data-original="https://pic2.zhimg.com/v2-5614a5e2da87f34b0b76eabe40339f35_r.png">下面是单机 4卡（Maxwel GPU）上各个操作随着通信量增加的带宽速度变化，可以看到带宽上限能达到10GB/s，接近PCIe的带宽。<img data-rawheight="348" src="https://pic1.zhimg.com/50/v2-65f4fb71798f71c2663c369329d8a058_hd.png" data-rawwidth="768" class="origin_image zh-lightbox-thumb" width="768" data-original="https://pic1.zhimg.com/v2-65f4fb71798f71c2663c369329d8a058_r.png">下图是Allreduce在单机不同架构下的速度比较：<img data-rawheight="440" src="https://pic2.zhimg.com/50/v2-155b290bdc2964e129d24fadc5784f8d_hd.png" data-rawwidth="912" class="origin_image zh-lightbox-thumb" width="912" data-original="https://pic2.zhimg.com/v2-155b290bdc2964e129d24fadc5784f8d_r.png">先不看DGX-1架构，这是Nvidia推出的深度学习平台，带宽能达到60GB/s。前面三个是单机多卡典型的三种连接方式，第三种是四张卡都在一个PCIe switch上，所以带宽较高，能达到>10GB/s PCIe的带宽大小，第二种是两个GPU通过switch相连后再经过CPU连接，速度会稍微低一点，第一种是两个GPU通过CPU然后通过QPI和另一个CPU上的两块卡相连，因此速度最慢，但也能达到>5GB/s。下图是Allreduce多机下的速度表现，左图两机8卡，机内PCIe，机间InfiniBand能达到>10GB/s的速度，InfiniBand基本上能达到机内的通信速度。<img data-rawheight="460" src="https://pic3.zhimg.com/50/v2-7b912f62b04ea7c1853fb4c1ae037b46_hd.png" data-rawwidth="849" class="origin_image zh-lightbox-thumb" width="849" data-original="https://pic3.zhimg.com/v2-7b912f62b04ea7c1853fb4c1ae037b46_r.png">下图是NCCL在CNTK ResNet50上的scalability，32卡基本能达到线性加速比。<img data-rawheight="414" src="https://pic1.zhimg.com/50/v2-b12bcc3d8b0a89abb5403cd24e0009a0_hd.png" data-rawwidth="711" class="origin_image zh-lightbox-thumb" width="711" data-original="https://pic1.zhimg.com/v2-b12bcc3d8b0a89abb5403cd24e0009a0_r.png">（4）我们的实测经验首先，在一台K40 GPU的机器上测试了GPU的连接拓扑，如下：<img data-rawheight="226" src="https://pic2.zhimg.com/50/v2-0c03b320c2871c4aec3b4866af2e8ae1_hd.png" data-rawwidth="698" class="origin_image zh-lightbox-thumb" width="698" data-original="https://pic2.zhimg.com/v2-0c03b320c2871c4aec3b4866af2e8ae1_r.png">可以看到前四卡和后四卡分别通过不同的CPU组连接，GPU0和GPU1直接通过PCIe switch相连，然后经过CPU与GPU2和GPU3相连。下面是测试PCIe的带宽，可以看到GPU0和GU1通信能达到10.59GB/s，GPU0同GPU2~3通信由于要经过CPU，速度稍慢，和GPU4~7的通信需要经过QPI，所以又慢了一点，但也能达到9.15GB/s。<img data-rawheight="166" src="https://pic1.zhimg.com/50/v2-89c4c2d9c9f637ca7cfb02de4a7c9500_hd.png" data-rawwidth="636" class="origin_image zh-lightbox-thumb" width="636" data-original="https://pic1.zhimg.com/v2-89c4c2d9c9f637ca7cfb02de4a7c9500_r.png">而通过NVlink连接的GPU通信速度能达到35GB/s：<img data-rawheight="155" src="https://pic1.zhimg.com/50/v2-f9c9256295f8f807685cb438a8bb78f0_hd.png" data-rawwidth="570" class="origin_image zh-lightbox-thumb" width="570" data-original="https://pic1.zhimg.com/v2-f9c9256295f8f807685cb438a8bb78f0_r.png">NCCL在不同的深度学习框架（CNTK/Tensorflow/Torch/Theano/Caffe）中，由于不同的模型大小，计算的batch size大小，会有不同的表现。比如上图中CNTK中Resnet50能达到32卡线性加速比，Facebook之前能一小时训练出ImageNet，而在NMT任务中，可能不会有这么大的加速比。因为影响并行计算效率的因素主要有并行任务数、每个任务的计算量以及通信时间。我们不仅要看绝对的通信量，也要看通信和计算能不能同时进行以及计算/通信比，如果通信占计算的比重越小，那么并行计算的任务会越高效。NMT模型一般较大，多大几十M上百M，不像现在image的模型能做到几M大小，通信所占比重会较高。下面是NMT模型单机多卡加速的一个简单对比图：<img data-rawheight="127" src="https://pic4.zhimg.com/50/v2-9a33ecf43cd9bbb77f7e05641568f7db_hd.png" data-rawwidth="482" class="origin_image zh-lightbox-thumb" width="482" data-original="https://pic4.zhimg.com/v2-9a33ecf43cd9bbb77f7e05641568f7db_r.png">以上就是对NCCL的一些理解，很多资料也是来自于NCCL的官方文档，欢迎交流讨论。
+
+
+
 \section{网络前馈速度的优化}
+\subsection{卷积计算的优化方式}
+\subsection{不同网络层的合并}
+
+
+
+
 
 
 
