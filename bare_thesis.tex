@@ -27,7 +27,8 @@
 \def\BUPTThesis{\textsc{BUPT}\-\textsc{Thesis}}
 
 %% 在这里添加图片文件搜索目录
-\graphicspath{{../}}
+\usepackage{graphicx} 
+\graphicspath{{../}{image/}}
 %% 自定义导言区结束
 
 %% 加载缩略语定义
@@ -45,9 +46,6 @@
 %% 声明前置部分
 \makefrontmatter
 
-%% 生成主要符号对照表
-\input{notations}
-
 %% 主体部分
 \mainmatter
 %% 用\include{}命令引用各章.tex文件
@@ -57,15 +55,6 @@
 \include{ch_4_gan}
 \include{ch_5_concln}
 %% 附录部分
-
-%% 如果有两个或两个以上的附录, 使用appendix环境
-\begin{appendix}
-  \input{app_lhospital}
-  % 自动抽取生成缩略语表作为附录A
-  \tableofacronyms
-  % 用\input{}添加其他的附录
-  % \input{...}
-\end{appendix}
 
 %% 如果只有一个附录, 使用appendix*环境
 %% \begin{appendix*}

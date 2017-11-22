@@ -1,0 +1,9 @@
+conv.png http://blog.csdn.net/u011534057/article/details/53408682  caffe中的卷积的计算细节和1x1卷积作用
+
+pooling.png https://www.quora.com/What-is-max-pooling-in-convolutional-neural-networks What is max pooling in convolutional neural networks?
+
+inner.png http://blog.csdn.net/l691899397/article/details/52267166 深度学习笔记6：全连接层的实现
+
+  H. Han, C. Otto, X. Liu, and A. K. Jain, “Demographic estimation from face images: Human vs. machine performance,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 37, no. 6, pp. 1148–1161, Jun. 2015.
+
+ Z. Liu, P. Luo, X. Wang, and X. Tang, “Deep learning face attributes in the wild,” in Proc. IEEE ICCV, 2015, pp. 3730– 3738.
