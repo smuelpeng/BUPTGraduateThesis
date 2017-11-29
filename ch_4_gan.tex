@@ -18,7 +18,7 @@
   \subfigure{
   \includegraphics[width=3.0in]{DCGAN_g.png}
   }
-  subfigure{
+  \subfigure{
   \includegraphics[width=3.0in]{DCGAN_d.png}
   }
   \caption{DCGAN的网络结构:(a)DCGAN中的生成网络模型结构；(b)DCGAN中的判决模型网络结构}
@@ -140,21 +140,21 @@ W(P_r, P_g) = \frac{1}{K} \sup_{||f||_L \leq K} \mathbb{E}_{x \sim P_r} [f(x)] -
 具体的超分辨率实验结果：
 \begin{figure}[!ht]
  \centering 
-	\subfigure[缩小的16*16小图]{
+	\subfigure[像素为16*16的原图]{
 	\includegraphics[width=0.25in,height=0.25in]{lr_Aaron_Eckhart_0001.jpg}
 	\includegraphics[width=0.25in,height=0.25in]{lr_Aaron_Guiel_0001.jpg}
 	\includegraphics[width=0.25in,height=0.25in]{lr_Aaron_Patterson_0001.jpg}
 	\includegraphics[width=0.25in,height=0.25in]{lr_Aaron_Peirsol_0001.jpg}
 	\includegraphics[width=0.25in,height=0.25in]{lr_Aaron_Peirsol_0002.jpg}
 	}
-	\subfigure[缩小的64*64原图]{
+	\subfigure[像素为64*64的原图]{
 	\includegraphics[width=1.0in,height=1.0in]{hr_Aaron_Eckhart_0001.jpg}
 	\includegraphics[width=1.0in,height=1.0in]{hr_Aaron_Guiel_0001.jpg}
 	\includegraphics[width=1.0in,height=1.0in]{hr_Aaron_Patterson_0001.jpg}
 	\includegraphics[width=1.0in,height=1.0in]{hr_Aaron_Peirsol_0001.jpg}
 	\includegraphics[width=1.0in,height=1.0in]{hr_Aaron_Peirsol_0002.jpg}
 	}
-	\subfigure[超分辨率的64*64小图]{
+	\subfigure[像素为64*64的超像素图]{
 	\includegraphics[width=1.0in,height=1.0in]{sr_Aaron_Eckhart_0001.jpg}
 	\includegraphics[width=1.0in,height=1.0in]{sr_Aaron_Guiel_0001.jpg}
 	\includegraphics[width=1.0in,height=1.0in]{sr_Aaron_Patterson_0001.jpg}
@@ -197,7 +197,7 @@ W(P_r, P_g) = \frac{1}{K} \sup_{||f||_L \leq K} \mathbb{E}_{x \sim P_r} [f(x)] -
    \caption{在CELEA数据集}
    \begin{tabular}{c|c|c}
      \toprule
-     数据集训练 &数据集测试 &40属性平均准确率\\
+     数据集训练 &数据集测试 &40属性平均准确率(\%)\\
      \midrule
       LFWA   &  CeleA &  66.2 \\
 	  CeleA  &  CeleA &  89.1 \\
