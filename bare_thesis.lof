@@ -6,7 +6,7 @@
 \contentsline {figure}{\numberline {2-6}{\ignorespaces sigmoid(a)、relu(b)、prelu(c)函数的函数曲线示意图\relax }}{12}{figure.caption.17}
 \contentsline {figure}{\numberline {2-7}{\ignorespaces 使用gabor固定初始化训练对于消耗能源的降低\relax }}{14}{figure.caption.18}
 \contentsline {figure}{\numberline {2-8}{\ignorespaces 模型并行与数据并行示意图\relax }}{16}{figure.caption.19}
-\contentsline {figure}{\numberline {2-9}{\ignorespaces 使用7层FOR循环实现卷积操作\relax }}{19}{figure.caption.20}
+\contentsline {figure}{\numberline {2-9}{\ignorespaces 使用7层FOR循环实现卷积操作\relax }}{20}{figure.caption.20}
 \contentsline {figure}{\numberline {2-10}{\ignorespaces im2col的操作示意图\relax }}{21}{figure.caption.21}
 \contentsline {figure}{\numberline {2-11}{\ignorespaces winograd算法的算法过程\relax }}{21}{figure.caption.22}
 \contentsline {figure}{\numberline {2-12}{\ignorespaces MEC算法的算法过程\relax }}{21}{figure.caption.23}
@@ -33,9 +33,9 @@
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {人脸矫正之后的图像}}}{38}{figure.caption.39}
 \contentsline {figure}{\numberline {4-1}{\ignorespaces DCGAN的网络结构:(a)DCGAN中的生成网络模型结构；(b)DCGAN中的判决模型网络结构\relax }}{43}{figure.caption.43}
 \contentsline {figure}{\numberline {4-2}{\ignorespaces minist图片生成的数字图片\relax }}{43}{figure.caption.44}
-\contentsline {figure}{\numberline {4-3}{\ignorespaces cifar10图片生成的数字图片\relax }}{44}{figure.caption.45}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {真实的cifar10图像数据}}}{44}{figure.caption.45}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {伪造的cifar10图像数据}}}{44}{figure.caption.45}
+\contentsline {figure}{\numberline {4-3}{\ignorespaces cifar10图片生成的数字图片\relax }}{43}{figure.caption.45}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {真实的cifar10图像数据}}}{43}{figure.caption.45}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {伪造的cifar10图像数据}}}{43}{figure.caption.45}
 \contentsline {figure}{\numberline {4-4}{\ignorespaces BGAN的网络结构\relax }}{44}{figure.caption.46}
 \contentsline {figure}{\numberline {4-5}{\ignorespaces 人脸图片生成效果图\relax }}{44}{figure.caption.47}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {1epoch}}}{44}{figure.caption.47}
@@ -51,7 +51,7 @@
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Common模块}}}{47}{figure.caption.50}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {UpSample模块}}}{47}{figure.caption.50}
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {DownSample模块}}}{47}{figure.caption.50}
-\contentsline {figure}{\numberline {4-9}{\ignorespaces 超分辨率使用lfw图片的效果示意图\relax }}{48}{figure.caption.51}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {像素为16*16的原图}}}{48}{figure.caption.51}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {像素为64*64的原图}}}{48}{figure.caption.51}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {像素为64*64的超像素图}}}{48}{figure.caption.51}
+\contentsline {figure}{\numberline {4-9}{\ignorespaces 超分辨率使用lfw图片的效果示意图\relax }}{47}{figure.caption.51}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {像素为16*16的原图}}}{47}{figure.caption.51}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {像素为64*64的原图}}}{47}{figure.caption.51}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {像素为64*64的超像素图}}}{47}{figure.caption.51}

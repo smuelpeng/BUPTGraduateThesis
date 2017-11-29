@@ -26,7 +26,7 @@
 \subsection{属性之间的相互联系}
 \begin{figure}[!ht]
  \centering
-	\includegraphics[width=4.0in]{attrconv.png}
+	\includegraphics[width=2.50in]{attrconv.png}
 	\caption{人脸属性之间的相互联系}
 \end{figure}
 
@@ -34,10 +34,11 @@
 正如上文提到的，很多人脸属性其实并没有关系，具有非常大的异构性，比如比如头发长短和是否微笑是没有必然关系的，而年龄是可量化的，而种族是类别化的，在表达方式上就是不一样的，这就需要不同的处理方式，也是为什么要把人脸属性作为一个multi-task的场景来处理的基本原因。
 
 但是作为人脸特征，它们同时在很多表现过程之中，也有很多共同的地方。
-通过对CelebA数据集的40个属性做了成对的Co-occurrence计算，它揭示了，属性的相关性是普遍存在的，比如性别男女和是否有胡子和头发长短是具有很强的相关性，我们认为它对属性学习有所帮助。因为属性之间具有相关性也就意味着所使用的表示特征也具有一定的相关性，而且很可能处在同一个线性空间中，具有很高的复用价值。所以完全有理由对于不同的任务之间使用共享特征作为识别的基础。为了利用属性之间的相关性，包括正相关和负相关等来进行互相补足；在设计的过程中我们更倾向于用的是单一主网路多任务自网络方式。
+通过对CelebA数据集的40个属性做了成对的Co-occurrence计算，如图3-1所示，它揭示了属性的相关性是普遍存在的，比如性别男女和是否有胡子和头发长短是具有很强的相关性，我们认为它对属性学习有所帮助。因为属性之间具有相关性也就意味着所使用的表示特征也具有一定的相关性，而且很可能处在同一个线性空间中，具有很高的复用价值。所以完全有理由对于不同的任务之间使用共享特征作为识别的基础。为了利用属性之间的相关性，包括正相关和负相关等来进行互相补足；在设计的过程中我们更倾向于用的是单一主网络多任务自网络方式。
 
 \section{人脸属性数据库简介}
 这一章主要对于对于具体的数据库进行介绍：
+
 \textbf{MOROH II：}MORPH是一个大型的mugshot图像数据库，每个数据库都有相关的元数据，包含三个标注属性：年龄（有序），性别（无序）和种族（无序）。通过调查MORPH AlbumII（MORPHII）上的所有三个属性估计任务，其中包含大约78K的超过20K个主题的图像。
 
 \textbf{CelebA：}CelebA是一个大型的人脸属性数据库拥有超过10万个身份的200K个名人图像，每个人拥有40个属性注释。该数据集中的图像在姿态，表情，种族，背景等方面存在较大的变化，使得面部属性估计具有挑战性。此外，由于有40个属性标注，CelebA数据库在特征学习效率方面对联合属性估计算法提出了挑战。
@@ -85,38 +86,37 @@ LabeledBySelf,即实验室自行标注的属性数据集，包括性别，年龄
 \begin{figure}[!ht]
  \centering 
 	\subfigure[Morph数据示例]{
-	\includegraphics[width=1.0in,height=1.0in]{M_34_W.png}
-	\includegraphics[width=1.0in,height=1.0in]{M_37_W.png}
-	\includegraphics[width=1.0in,height=1.0in]{M_40_B.png}
-	\includegraphics[width=1.0in,height=1.0in]{M_58_B.png}
+	\includegraphics[width=0.9in,height=0.9in]{M_34_W.png}
+	\includegraphics[width=0.9in,height=0.9in]{M_37_W.png}
+	\includegraphics[width=0.9in,height=0.9in]{M_40_B.png}
+	\includegraphics[width=0.9in,height=0.9in]{M_58_B.png}
 	}
 	\subfigure[celeA数据示例]{
-	\includegraphics[width=1.0in,height=1.0in]{000001.jpg}
-	\includegraphics[width=1.0in,height=1.0in]{000002.jpg}
-	\includegraphics[width=1.0in,height=1.0in]{000003.jpg}
-	\includegraphics[width=1.0in,height=1.0in]{000004.jpg}
+	\includegraphics[width=0.9in,height=0.9in]{000001.jpg}
+	\includegraphics[width=0.9in,height=0.9in]{000002.jpg}
+	\includegraphics[width=0.9in,height=0.9in]{000003.jpg}
+	\includegraphics[width=0.9in,height=0.9in]{000004.jpg}
 	}
 	\subfigure[LFWA数据示例]{
-	\includegraphics[width=1.0in,height=1.0in]{lfw1.jpg}
-	\includegraphics[width=1.0in,height=1.0in]{lfw2.jpg}
-	\includegraphics[width=1.0in,height=1.0in]{lfw3.jpg}
-	\includegraphics[width=1.0in,height=1.0in]{lfw4.jpg}
+	\includegraphics[width=0.9in,height=0.9in]{lfw1.jpg}
+	\includegraphics[width=0.9in,height=0.9in]{lfw2.jpg}
+	\includegraphics[width=0.9in,height=0.9in]{lfw3.jpg}
+	\includegraphics[width=0.9in,height=0.9in]{lfw4.jpg}
 	}
 	\subfigure[Chalearn LAP and FotW数据示例]{
-	\includegraphics[width=1.0in,height=1.0in]{lap00001.jpg}
-	\includegraphics[width=1.0in,height=1.0in]{lap00002.jpg}
-	\includegraphics[width=1.0in,height=1.0in]{lap00003.jpg}
-	\includegraphics[width=1.0in,height=1.0in]{lap00004.jpg}
+	\includegraphics[width=0.9in,height=0.9in]{lap00001.jpg}
+	\includegraphics[width=0.9in,height=0.9in]{lap00002.jpg}
+	\includegraphics[width=0.9in,height=0.9in]{lap00003.jpg}
+	\includegraphics[width=0.9in,height=0.9in]{lap00004.jpg}
 	}
 	\subfigure[LBS数据示例]{
-	\includegraphics[width=1.0in,height=1.0in]{lbs0.jpg}
-	\includegraphics[width=1.0in,height=1.0in]{lbs1.jpg}
-	\includegraphics[width=1.0in,height=1.0in]{lbs2.jpg}
-	\includegraphics[width=1.0in,height=1.0in]{lbs3.jpg}
+	\includegraphics[width=0.9in,height=0.9in]{lbs0.jpg}
+	\includegraphics[width=0.9in,height=0.9in]{lbs1.jpg}
+	\includegraphics[width=0.9in,height=0.9in]{lbs2.jpg}
+	\includegraphics[width=0.9in,height=0.9in]{lbs3.jpg}
 	}
 	\caption{数据集图片示例}
 \end{figure}
-
 这些数据库可以根据所使用的注释方法分为三类：（i）具有序性标签的数据库（MORPHII和LFWA），（ii）具有二进制属性的数据库（CelebA，LFWA）和（iii） 具有单个属性的数据库LAPAge2015和LBS数据库。 我们可以看到，除了MORPH II数据库，其他数据库主要包含真实场景下的人脸图像。  
 
 可以看到人脸属性的数据集其实比较庞大，如果都能够充分利用，可以获得相比于单一数据集更加出色的识别效果。但是每个数据集之间的数据不同、数量不同、标注不同，实际使用中往往使用先训练一个再训练一个的流程，非常耗时而且不能够保证模型效果在原有数据集上保持良好的效果。实际使用来看，使用celeA训练的数据对于lfwA的数据效果并不好，而加入lfwA的数据训练就可以提升相关lfwA上的准确率。但需要注意的是LFWA的数据量远小于celeA的数据量，简单的把两个数据合起来训练，两个数据库之前的差异分布其实并不能得到特别好的弥补，训练的准确率还是不能和单独使用lfwA相比。
@@ -142,18 +142,18 @@ DIF（Demographic informative features）是基于BIF（生物启发式特征）
 
 2）层级分类器的建设：
 
-层级分类器主要针对年龄。比如，首先进行年龄组分类（针对数据集设定阈值），在此按是否超过18岁分为两类；低于18岁的一类再判断是否低于7岁，再分为两类，然后低于7岁再进行回归得到具体的年龄数值，以此类推，先一层一层地通过多个分类器树形展开得到具体的人脸年龄段，然后在具体的人连年龄分段中及进行回归。hu的实验证明，这种层级式的分类方式要优于直接分类方法。
+层级分类器主要针对年龄。比如，首先进行年龄组分类（针对数据集设定阈值），在此按是否超过18岁分为两类；低于18岁的一类再判断是否低于7岁，再分为两类，然后低于7岁再进行回归得到具体的年龄数值，以此类推，先一层一层地通过多个分类器树形展开得到具体的人脸年龄段，然后在具体的人连年龄分段中及进行回归。实验证明，这种层级式的分类方式要优于直接分类方法。
 
 基于DIF特征的属性识别方法是经典的基于传统特征和分类器的属性识别方法，即使在现在，特征融合、层级分类器建设等操作依然具有一定的借鉴意义
 
 问题与不足：尽管效果不错，但整个方法还是有很多的问题，例如，层级分类器确实能够提升分类的效果，但是复杂都明显过高，并不简洁，使用基于传统滤波器和表层信息的图像特征，需要大量的特征筛选和过滤工作。而且总结来讲是DIF系统还处在各个部分的分开设计，整个系统并不是处在一个整体性学习的状态。需要较多的人工干预和训练才能得到较好的效果。
 \section{基于共享神经网络特征和最大间隔分类器的人脸属性识别}
 随着深度学习方法的提出，深度学习的特征慢慢取代了传统的手工设计的特征，结合深度学习中经常使用的分类器，得到了更高的效果。
-具有代表性的是基于级联CNN网络和SVM分类器的识别方法，使用两个CNN框架Lnet和Anet进行级联学习，其中Lnet负责检测图片中的人脸，Anet针对于Lnet中检测人脸使用交叉熵loss进行训练，为了提升识别的准确性使用SVM对于ANet中的特征进行训练。最后由SVM分类器输出具体的人脸属性预测值。
+具有代表性的是基于级联CNN网络和SVM分类器的识别方法\cite{CELEA}\cite{SVM}，使用两个CNN框架Lnet和Anet进行级联学习，其中Lnet负责检测图片中的人脸，Anet针对于Lnet中检测人脸使用交叉熵loss进行训练，为了提升识别的准确性使用SVM对于ANet中的特征进行训练。最后由SVM分类器输出具体的人脸属性预测值。
 其中不难发现器图片的标签就采用的是标签化编码的方式。
 \begin{figure}[!ht]
  \centering
-	\includegraphics[width=6.0in]{liuziwei.png}
+	\includegraphics[width=5.0in]{liuziwei.png}
 	\caption{基于共享神经网络特征和SVM分类器的人脸属性识别}
 \end{figure}
 
@@ -180,8 +180,8 @@ DIF（Demographic informative features）是基于BIF（生物启发式特征）
 SA-softmaxLoss在分类结果上将网络分类概率输出由N个，改为N+1个，第N+1维值定义为无法识别类（unrecognizable class）。分类label由原来的一元数字标签变为一个四元的整形数组分别用于储存图片在过去训练过程中出现的次数、图像被判正确的次数、图像真实的标签，图像目前的标签。训练的过程中使用动态标签（Dynamic tag，Dt）训练方法，不断更新训练图片的类别。
 
 测试的过程中，首先使用softmax对于所有N+1类求出无法识别类的概率输出，使用1-无法识别类的概率作为网络的置信输出。
-根据置信度对照表给出网络置信度评价，对其余的类别重新使用softmax进行概率获取。最后的输出形式是：输出类别概率+网络置信度概率。
- \begin{table}
+根据置信度对照表3-2给出网络置信度评价，对其余的类别重新使用softmax进行概率获取。最后的输出形式是：输出类别概率+网络置信度概率。
+ \begin{table}[h]
   \centering
    \caption{SA-softmax的置信度判断对照表}
    \label{tab:req-pkg}
@@ -199,8 +199,7 @@ SA-softmaxLoss在分类结果上将网络分类概率输出由N个，改为N+1�
  \end{table}
 \subsection{动态调整标签的训练方法}
 对于softmax简单的加入一类未知类，还远远不够，至少训练的样本都没有，这分支的梯度永远都是0，不会对网络产生训练作用。但实际上训练开始的时候我们是无法知道哪些图片是网络不能够正确识别的，所以引入动态调整标签的训练方法：
-于是在现有的框架下，我们设计了如下的训练方法：
-
+于是在现有的框架下，我们设计了如Algorithm1 的训练方法：
 \begin{algorithm}[h]
 \caption{动态标签调整的算法流程}
 \begin{algorithmic}[1]
@@ -228,6 +227,7 @@ SA-softmaxLoss在分类结果上将网络分类概率输出由N个，改为N+1�
 \end{algorithmic}
 \end{algorithm}
 
+通过动态标签调整的算法，我们就可以动态的调整网络无法识别的样本标签，一方面防止标签的错误标识，另一方面也为自评网络模块提供了相应的正样本。这样经过一定轮数的调试就可以获得具有自评模块的神经网络预测网络。
 \section{实验设置}
 在上一节中，总结了在人脸属性任务的主流方法和发展过程，可以看出随着深度学习的发展和端到端学习在模式识别过程中的发展，很多问题都得到了改善，但依然存在着一些主流问题和场景困境一直存在，我仔细对于相关问题进行了思考总结。
 \begin{enumerate}
@@ -356,24 +356,19 @@ Alexnet的基础结构包括：5层卷积，5层pooling，2个全连接层;
 \section{实验结论与分析}
 从实验的结果来看：
 \begin{enumerate}
-\item 数据集并行训练的方式进行训练的过程之中，经过并行训练的数据集得到的模型在morph上MAE误差减少了0.7。也就是说减少18\%的误差，而在LBS数据集的测试上准确率提升了2.3%，减少了13%的误差。可以看到联合训练的方式能够起到增加训练数据的效果，在不同的数据集中都取得了很好的提升。
-
-可以看到联合训练的方式能够起到增加训练数据的效果，在不同的数据集中都取得了很好的提升。而且得益于联合训练的结构特性，可以在一个模型中输出两种数据格式的预测值，也就是年龄的回归值和分类值，相比于原本每种数据格式都需要重新训练的方式更见简洁。
-
-
+\item 数据集并行训练的方式进行训练的过程之中，经过并行训练的数据集得到的模型在morph上MAE误差减少了0.7。也就是说减少18\%的误差，而在LBS数据集的测试上准确率提升了2.3\%，减少了13\%的误差。
+可以看到联合训练的方式能够起到增加训练数据的效果，在不同的数据集中都取得了很好的提升。而且得益于联合训练的结构特性，可以在一个模型中输出两种数据格式的预测值，也就是年龄的回归值和分类值，相比于原本每种数据格式都需要重新训练的方式更加简洁。
 \item 对于问题二，使用人脸矫正的图片可以提高人脸性别和微笑的识别效果，对于性别任务来讲任务从准确率84.5提升到89.9，错误率减少了34.8\%,
 微笑的准确率从81.4提升到84.3，错误率减少了15.5\%。
 
-说明在使用人脸矫正的方法情况下，可以提升对于微笑和性别的识别准确率。但是和原本的直接将人脸检测的图片框截取的图片作为输入的方式，人脸矫正的处理方式则稍显复杂，而且还在一定程度上取决于人脸landmark的效果。而且仔细分析来看，对于微笑任务的识别效果提升并不如人脸性别的识别效果提升。说明人脸矫正的策略可能并不是所有的人脸属性任务都会具有相同的效果，比如人脸姿势和角度相关属性，通过矫正甚至可能改变人脸属性。
-
-但是人脸属性矫正还是作为当年最流行的人脸任务与处理方式，在大多数任务中被证明有效。
+说明在使用人脸矫正的方法情况下，可以提升对于微笑和性别的识别准确率。但是和原本的直接将人脸检测的图片框截取的图片作为输入的方式，人脸矫正的处理方式则稍显复杂，而且还在一定程度上取决于人脸landmark的效果。而且仔细分析来看，对于微笑任务的识别效果提升并不如人脸性别的识别效果提升。说明人脸矫正的策略可能并不是所有的人脸属性任务都会具有相同的效果，比如人脸姿势和角度相关属性，通过矫正甚至可能改变人脸属性。但是人脸属性矫正还是作为当年最流行的人脸任务与处理方式，在大多数任务中被证明有效。
 \item 
 对于问题三，自评网路对于人脸年龄的识别有比较明显的提升，对于使用普通softmax和SA-softmax的不同策略的模型，使用自评网络训练的方法将人脸年龄5分类的top1准确率从85.2提升到93.1，效果显著。
 而具体来看，有15575张图片的置信度为S级，而且S级的人脸准确率达到95.9\%。而评级为A的图片数量为2830，准确率为88.8\%。其余评级的准确率都比正常训练要低。也就是说有92.0\%的图片可以通过自评模块获得比正常训练更高的准确率。这也正是自评网络的优势所在，能够提升系统的整体判断准确率。从而减少人工审核的工作量。
 \end{enumerate}
 
 \section{本章小结}
-在本章中，我们通过对于人脸属性和性质的分析，不同人脸属性的数据库简介。以及人脸属性中的常见做法的分析和介绍。逐步分析了人脸属性中面临的问题。
+在本章中，我们通过对于人脸属性和性质的分析，不同人脸属性的数据库简介。以及人脸属性中的常见做法的分析和介绍，逐步分析了人脸属性中面临的问题，并将其归纳为三个部分，并针对不同部分设计实验。
 
 在设计人脸属性是别的方案过程中，增加BN和自网络模块,以神经网络为基础设计人脸属性的识别模型。对于具有不同标签的人脸属性的数据，共享基础结构，单独设计自网络模块的方式并行训练，并采用多机多卡的方式加速训练。而对于人脸属性中输入格式形式，使用经典的基于landmark的形式进行人脸矫正。最后为了稳定网络的输出，我们为网络加入具有自评估能力的SA-softmax，不仅提高了人脸的属性识别的准确率，同时增加了模型对于自身能力的评估能力。
 
