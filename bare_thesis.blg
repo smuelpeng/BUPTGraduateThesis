@@ -1,0 +1,229 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/W32TeX)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: bare_thesis.aux
+A level-1 auxiliary file: ch_1_intro.aux
+A level-1 auxiliary file: ch_2_convclu.aux
+A level-1 auxiliary file: ch_3_faceattr.aux
+A level-1 auxiliary file: ch_4_gan.aux
+A level-1 auxiliary file: ch_5_concln.aux
+The style file: buptgraduatethesis.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: bare_thesis.bib
+I was expecting a `,' or a `}'---line 49 of file bare_thesis.bib
+ :   
+ :   year="2008",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--string name "pp." is undefined
+--line 95 of file bare_thesis.bib
+I was expecting a `,' or a `}'---line 95 of file bare_thesis.bib
+ :   pages=pp. 
+ :             752–760""
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 114 of file bare_thesis.bib
+ :   
+ :   pages=" pp. 1–9"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 139 of file bare_thesis.bib
+ :   
+ :   pages="pp. 730–738"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 164 of file bare_thesis.bib
+ :   
+ :   pages="pp. 1097–1105"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 242 of file bare_thesis.bib
+ :   
+ :   pages=" 1026-1034"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 562 of file bare_thesis.bib
+ : @article{BGAN
+ :              ,
+I'm skipping whatever remains of this entry
+A bad cross reference---entry "MEC"
+refers to entry "DBLP:conf/icml/2017", which doesn't exist
+Warning--I didn't find a database entry for "DILUTECONV"
+Warning--I didn't find a database entry for "BN"
+Warning--I didn't find a database entry for "HUHAN_MTL"
+Warning--I didn't find a database entry for "TRANSFER"
+Warning--I didn't find a database entry for "DBLP:conf/icml/2017"
+-- BUPTGraduateThesis.bst version 4.0 (2015/01/02) by Xianling Wang.
+-- https://gitcafe.com/rioxwang/BUPTGraduateThesis
+-- See the "buptgraduatethesis.pdf" manual for usage information.
+Warning--address is empty in EMPATH
+Warning--author is empty in FGNET
+Warning--date is empty in FGNET
+Warning--address is empty in MORPH
+Name 1 in "N. Kumar, P. N. Belhumeur, and S. Nayar" has a comma at the end for entry FACETRACER
+while executing---line 1304 of file buptgraduatethesis.bst
+Warning--address is empty in FACETRACER
+Warning--year is empty in FACETRACER
+Name 1 in "H. Han, C. Otto, X. Liu, and A. K. Jain" has a comma at the end for entry HUHAN
+while executing---line 1304 of file buptgraduatethesis.bst
+Warning--volume is empty in HUHAN
+Warning--number is empty in HUHAN
+Too many commas in name 1 of "P.J. Phillips, H. Moon, S. A. Rizvi, P.J. Rauss" for entry FERET
+while executing---line 1304 of file buptgraduatethesis.bst
+Warning--volume is empty in FERET
+Warning--number is empty in FERET
+Name 1 in "Z. Liu, P. Luo, X. Wang, and X. Tang" has a comma at the end for entry CELEA
+while executing---line 1304 of file buptgraduatethesis.bst
+Warning--address is empty in CELEA
+Name 1 in "M. Ehrlich, T. J. Shields, T. Almaev, and M. R. Amer" has a comma at the end for entry PCA
+while executing---line 1304 of file buptgraduatethesis.bst
+Warning--address is empty in PCA
+Warning--volume is empty in BIF
+Warning--number is empty in BIF
+Name 1 in "E. Eidinger, R. Enbar, and T. Hassner" has a comma at the end for entry LBP
+while executing---line 1304 of file buptgraduatethesis.bst
+Warning--volume is empty in LBP
+Warning--number is empty in LBP
+Name 1 in "X. Geng, Z.-H. Zhou, and K. Smith-Miles" has a comma at the end for entry AAM
+while executing---line 1304 of file buptgraduatethesis.bst
+Warning--volume is empty in AAM
+Warning--number is empty in AAM
+Warning--address is empty in ADIENCE
+Name 1 in "M. Uric´ar, R. Timofte, R. Rothe, J. Matas, and L. V. Gool" has a comma at the end for entry CNNSVM
+while executing---line 1304 of file buptgraduatethesis.bst
+Too many commas in name 1 of "M. Uric´ar, R. Timofte, R. Rothe, J. Matas, and L. V. Gool" for entry CNNSVM
+while executing---line 1304 of file buptgraduatethesis.bst
+Warning--address is empty in CNNSVM
+Warning--booktitle is empty in MULTITASK
+Warning--address is empty in MULTITASK
+Name 1 in "A. Krizhevsky, I. Sutskever, and G. E. Hinton" has a comma at the end for entry ALEXNET
+while executing---line 1304 of file buptgraduatethesis.bst
+Warning--address is empty in ALEXNET
+Warning--booktitle is empty in BP
+Name 1 in "Lin, M., Chen, Q., and Yan, S" has a comma at the end for entry 1x1CONV
+while executing---line 1304 of file buptgraduatethesis.bst
+Too many commas in name 1 of "Lin, M., Chen, Q., and Yan, S" for entry 1x1CONV
+while executing---line 1304 of file buptgraduatethesis.bst
+Warning--address is empty in 1x1CONV
+Warning--publisher is empty in 1x1CONV
+Warning--booktitle is empty in DEFORMCONV
+Warning--number is empty in DEFORMCONV
+Warning--pages is empty in DEFORMCONV
+Warning--booktitle is empty in ROIPOOLING
+Warning--number is empty in ROIPOOLING
+Warning--pages is empty in ROIPOOLING
+Warning--booktitle is empty in SPPNET
+Warning--number is empty in SPPNET
+Warning--pages is empty in SPPNET
+Warning--booktitle is empty in VGGNET
+Warning--number is empty in VGGNET
+Warning--pages is empty in VGGNET
+Warning--date is empty in FCGOOD
+Warning--booktitle is empty in FASTERRCNN
+Warning--number is empty in FASTERRCNN
+Warning--pages is empty in FASTERRCNN
+Too many commas in name 1 of "He K, Zhang X, Ren S, et al" for entry MSRA
+while executing---line 1304 of file buptgraduatethesis.bst
+Warning--address is empty in MSRA
+Warning--booktitle is empty in GABOR
+Warning--number is empty in GABOR
+Warning--pages is empty in GABOR
+Warning--series is empty in CUDA
+Warning--address is empty in CUDA
+Warning--publisher is empty in CUDA
+Warning--booktitle is empty in CAFFE
+Warning--volume is empty in CAFFE
+Warning--number is empty in CAFFE
+Warning--pages is empty in CAFFE
+Warning--booktitle is empty in WINOGRAD
+Warning--number is empty in WINOGRAD
+Warning--pages is empty in WINOGRAD
+Warning--address is empty in MEC
+Warning--publisher is empty in MEC
+Warning--date is empty in MKL
+Warning--date is empty in NNPACK
+Warning--booktitle is empty in CUDNN
+Warning--number is empty in CUDNN
+Warning--pages is empty in CUDNN
+Warning--booktitle is empty in HUHAN_HETER
+Warning--number is empty in HUHAN_HETER
+Warning--pages is empty in HUHAN_HETER
+Name 1 in "G. B. Huang, M. Ramesh, T. Berg, and E. Learned-Miller" has a comma at the end for entry LFWA
+while executing---line 1304 of file buptgraduatethesis.bst
+Warning--address is empty in LFWA
+Name 1 in "S. Escalera, X. Bar´o, H. J. Escalante, and I. Guyon" has a comma at the end for entry CHALEARN
+while executing---line 1304 of file buptgraduatethesis.bst
+Warning--address is empty in CHALEARN
+Warning--booktitle is empty in MXNET
+Warning--number is empty in MXNET
+Warning--pages is empty in MXNET
+Warning--booktitle is empty in DCGAN
+Warning--number is empty in DCGAN
+Warning--pages is empty in DCGAN
+Warning--booktitle is empty in MNIST
+Warning--volume is empty in MNIST
+Warning--number is empty in MNIST
+Warning--pages is empty in MNIST
+Warning--booktitle is empty in CIFAR10
+Warning--year is empty in CIFAR10
+Warning--volume is empty in CIFAR10
+Warning--number is empty in CIFAR10
+Warning--pages is empty in CIFAR10
+Warning--author is empty in BGAN
+Warning--booktitle is empty in BGAN
+Warning--address is empty in BGAN
+Warning--address is empty in TRGAN
+Warning--publisher is empty in TRGAN
+Warning--year is empty in TRGAN
+Warning--booktitle is empty in RESNET
+Warning--number is empty in RESNET
+Warning--pages is empty in RESNET
+Warning--booktitle is empty in ESPCN
+Warning--number is empty in ESPCN
+Warning--pages is empty in ESPCN
+
+Done.
+You've used 45 entries,
+            2106 wiz_defined-function locations,
+            803 strings with 11004 characters,
+and the built_in function-call counts, 18154 in all, are:
+= -- 1770
+> -- 348
+< -- 0
++ -- 146
+- -- 0
+* -- 1848
+:= -- 2062
+add.period$ -- 0
+call.type$ -- 45
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 140
+duplicate$ -- 1179
+empty$ -- 2159
+format.name$ -- 101
+if$ -- 4272
+int.to.chr$ -- 0
+int.to.str$ -- 45
+missing$ -- 0
+newline$ -- 239
+num.names$ -- 43
+pop$ -- 327
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 65
+stack$ -- 0
+substring$ -- 2582
+swap$ -- 145
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 0
+warning$ -- 95
+while$ -- 160
+width$ -- 47
+write$ -- 328
+(There were 23 error messages)

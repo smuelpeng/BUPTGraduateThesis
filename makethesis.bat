@@ -26,13 +26,13 @@ set PROJECT=buptgraduatethesis
 REM File name of your top-level tex file.
 set TARGET=bare_thesis
 REM File name list of tex files for mainmatters.
-set MAINMATTERS=(ch_intro ch_concln)
+set MAINMATTERS=(ch_1_intro ch_2_convclu ch_3_faceattr ch_4_gan ch_5_concln)
 REM Driver type to build PDF.
 REM 'xetex' for xetex engine;
 set DRIVER=xetex
 REM Bib type to construct bibliography.
 REM 'chapbib' for bib per chapter; 'allbib' for bib in thesis end.
-set BIBTYPE=chapbib
+set BIBTYPE=allbib
 REM --------------------------------------------------------------------------
 REM Main Function Selection
 
