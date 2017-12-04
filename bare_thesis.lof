@@ -31,11 +31,11 @@
 \contentsline {figure}{\numberline {3-8}{\ignorespaces 人脸矫正效果演示\relax }}{38}{figure.caption.39}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {人脸矫正之前的图像}}}{38}{figure.caption.39}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {人脸矫正之后的图像}}}{38}{figure.caption.39}
-\contentsline {figure}{\numberline {4-1}{\ignorespaces DCGAN的网络结构:(a)DCGAN中的生成网络模型结构；(b)DCGAN中的判决模型网络结构\relax }}{43}{figure.caption.43}
+\contentsline {figure}{\numberline {4-1}{\ignorespaces DCGAN的网络结构:(a)DCGAN中的生成网络模型结构；(b)DCGAN中的判决模型网络结构\relax }}{42}{figure.caption.43}
 \contentsline {figure}{\numberline {4-2}{\ignorespaces minist图片生成的数字图片\relax }}{43}{figure.caption.44}
-\contentsline {figure}{\numberline {4-3}{\ignorespaces cifar10图片生成的数字图片\relax }}{43}{figure.caption.45}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {真实的cifar10图像数据}}}{43}{figure.caption.45}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {伪造的cifar10图像数据}}}{43}{figure.caption.45}
+\contentsline {figure}{\numberline {4-3}{\ignorespaces cifar10图片生成的数字图片\relax }}{44}{figure.caption.45}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {真实的cifar10图像数据}}}{44}{figure.caption.45}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {伪造的cifar10图像数据}}}{44}{figure.caption.45}
 \contentsline {figure}{\numberline {4-4}{\ignorespaces BGAN的网络结构\relax }}{44}{figure.caption.46}
 \contentsline {figure}{\numberline {4-5}{\ignorespaces 人脸图片生成效果图\relax }}{44}{figure.caption.47}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {1epoch}}}{44}{figure.caption.47}
